@@ -46,8 +46,9 @@ public class SurveyController {
 
 		CheckToken isValid = new CheckToken();
 		ObjectMapper checkToken = new ObjectMapper();
+		//Aqui hay que pasar la url de autentificacion
 		isValid = checkToken.readValue(new URL(
-				"http://localhost/auth/api/checkToken?token=" + token),
+				"http://auth-egc.azurewebsites.net/Help/api/checkToken?token=" + token),
 				domain.CheckToken.class);
 		Assert.isTrue(isValid.getValid());
 		int i = surveyService.save(s);
@@ -82,7 +83,7 @@ public class SurveyController {
 		CheckToken isValid = new CheckToken();
 		ObjectMapper checkToken = new ObjectMapper();
 		isValid = checkToken.readValue(new URL(
-				"http://localhost/auth/api/checkToken?token=" + token),
+				"http://auth-egc.azurewebsites.net/Help/api/checkToken?token=" + token),
 				domain.CheckToken.class);
 		Assert.isTrue(isValid.getValid());
 		Collection<Survey> res = surveyService.allCreatedSurveys(creator);
