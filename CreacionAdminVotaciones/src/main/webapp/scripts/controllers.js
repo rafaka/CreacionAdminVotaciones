@@ -3,7 +3,7 @@ cavControllers.controller('indexController', function($http,$rootScope, $cookieS
 	$rootScope.title="Ágora@US";
 	var getCookiesAngular = $getCookiesAngular();
 	getCookiesAngular.then(function(result){
-		$rootScope.username=$cookieStore.get("Pacote");
+		$rootScope.username=$cookieStore.get("angularUser");
 	});
 	//DONDE PONCA PACOTE PONER $cookieStore.get("angularUser")
 });
@@ -11,12 +11,12 @@ cavControllers.controller('createController', function($scope, $http, $rootScope
 	$rootScope.title="Crear votación";
 	$scope.qs=[];
 	$scope.i = 0;
-	$scope.survey={type:"survey", usernameCreator:$cookieStore.get("Pacote"), title:"",description:"",startDate:"",endDate:"",questions:[], tipo:""};
+	$scope.survey={type:"survey", usernameCreator:$cookieStore.get("angularUser"), title:"",description:"",startDate:"",endDate:"",questions:[], tipo:""};
 	$scope.addQuestionField = function(){
 		$scope.i+=1;
 		$scope.qs.push($scope.i);
 	};
-	if($cookieStore.get("Pacote")!=null){
+	if($cookieStore.get("angularUser")!=null){
 		$scope.submit = function(survey){
 			console.log(survey);
 			var data = null;
@@ -33,7 +33,7 @@ cavControllers.controller('createController', function($scope, $http, $rootScope
 						}
 					});
 				}
-				$http.get("/Deliberations/customer/createThreadFromVotacion.do?name="+survey.title);
+				$http.get("/Deliberations/customer/createThreadFromVotacion.do?name="+survey.title+"&censoId="+data.id);
 			});
 		};
 	}

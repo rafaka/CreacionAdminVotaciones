@@ -7,9 +7,9 @@ cavFactories.factory('$getCookiesAngular',function($http, $cookieStore, $q){
 			if(data.user!="" && data.token!=""){
 				$cookieStore.put("angularUser",data.user);
 				$cookieStore.put("angularToken",data.token);
-				res.resolve("OK")
+				res.resolve("OK");
 			}else{
-				res.reject("Not Auth")
+				res.reject("Not Auth");
 			}
 		});
 		return res.promise;
