@@ -334,10 +334,10 @@
 		</dependency>
 
 		<!-- Verificacion -->
-		<dependency>			
-			<groupId>com.verificacion</groupId>		
-			<artifactId>verificacion</artifactId>		
-			<version>1.0</version>		
+		<dependency>
+			<groupId>com.verificacion</groupId>
+			<artifactId>verificacion</artifactId>
+			<version>2.1.2</version>
 		</dependency>
 
 	</dependencies>
