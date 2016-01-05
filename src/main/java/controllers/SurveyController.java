@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 
-import main.Authority;
-import main.AuthorityImpl;
+
+import main.java.Authority;
+import main.java.AuthorityImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -33,7 +34,7 @@ public class SurveyController {
 	// Servicios
 	@Autowired
 	private SurveyService surveyService;
-
+	private static Integer tokenj;
 	// Métodos
 
 	// Método para guardar la votación creada.
@@ -54,8 +55,9 @@ public class SurveyController {
 		int i = surveyService.save(s);
 		Survey res = surveyService.findOne(i);
 		Authority a = new AuthorityImpl();
-	
-		a.postKey(String.valueOf(res.getId()));
+		tokenj= CheckToken.calculateToken(res.getId());
+		a.postKey(String.valueOf(res.getId()),tokenj);
+		
 		return res;
 	}
 
