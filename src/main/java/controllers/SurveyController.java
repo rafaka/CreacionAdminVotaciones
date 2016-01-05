@@ -54,6 +54,7 @@ public class SurveyController {
 		int i = surveyService.save(s);
 		Survey res = surveyService.findOne(i);
 		Authority a = new AuthorityImpl();
+	
 		a.postKey(String.valueOf(res.getId()));
 		return res;
 	}
